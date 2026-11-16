@@ -5,7 +5,7 @@
 - Tên nhóm: AIPRO
 - Lớp: L3A
 - Repo nhóm: `K5-L3A-DAY08-AIPRO-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt: `https://github.com/haanh293/K5-L3A-DAY08-AIPRO-FromWorkflowstoAgents` | nhánh `main` | commit chốt: `cb6b4b1` (code & benchmark: `3a9ebbc`)
+- URL repo, nhánh nộp, commit chốt: `https://github.com/haanh293/K5-L3A-DAY08-AIPRO-FromWorkflowstoAgents` | nhánh `main` | commit chốt: `4faad08` (code & benchmark: `3a9ebbc`)
 
 ## Thành viên
 

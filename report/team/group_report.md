@@ -10,7 +10,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
   2. Nguyễn Văn Vinh (`2A202603672`) — Role 2: Single Agent (ReAct)
   3. Hoàng Đăng Kiên (`2A202603636`) — Role 3: Orchestrator + Handoff & Security
   4. Giáp Mạnh Tuyên (`2A202603648`) — Role 4: Durability (Crash/Ledger QA) + Evaluation & Research
-- Commit chốt (trùng `report/team/decision_adr.md`): `3a9ebbc` (merge nhánh `main`: `cb6b4b1`)
+- Commit chốt (trùng `report/team/decision_adr.md`): `4faad08` (code và bằng chứng benchmark: `3a9ebbc`)
 
 ## 2. Mục tiêu và cách tiếp cận
 
