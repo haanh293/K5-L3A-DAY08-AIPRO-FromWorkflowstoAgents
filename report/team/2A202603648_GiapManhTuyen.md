@@ -13,7 +13,7 @@ Role 4: Durability (Crash/Ledger QA), Evaluation & Research.
 
 ## 3. Đóng góp cụ thể
 
-Rà soát kiểm tra idempotency, crash và approval; bổ sung test kiểm tra secret và PII trong trace/kết quả swarm. Chạy crash suite, ma trận student, benchmark bốn shape và ablation workflow–swarm; điền research card, số liệu báo cáo và đề xuất ADR. Commit: cập nhật sau khi commit.
+Rà soát kiểm tra idempotency, crash và approval; bổ sung test kiểm tra secret và PII trong trace/kết quả swarm. Chạy crash suite, ma trận student, benchmark bốn shape và ablation workflow–swarm; điền research card, số liệu báo cáo và đề xuất ADR. Commit đóng góp: `3a9ebbc`.
 
 ## 4. Bằng chứng
 
