@@ -1,15 +1,11 @@
-# Báo cáo cá nhân — MSSV_HoTen
-
-Đổi tên file theo quy tắc `MSSV_HoTen.md`.
-
-Ví dụ: `20241234_NguyenVanAn.md`.
+# Báo cáo cá nhân — 2A202603636_HoangDangKien
 
 ## 1. Thông tin thành viên
 
 - Họ tên: Hoàng Đăng Kiên
 - MSSV: 2A202603636
-- Email:26ai.kienhd@vinuni.edu.vn
-- GitHub: https://github.com/haanh293/K5-L3A-DAY08-AIPRO-FromWorkflowstoAgents
+- Email: 26ai.kienhd@vinuni.edu.vn
+- GitHub: https://github.com/kienHD03
 
 ## 2. Phần việc phụ trách
 
@@ -18,6 +14,7 @@ Ví dụ: `20241234_NguyenVanAn.md`.
 
 ## 3. Đóng góp cụ thể
 
+- **Commit chính:** `9c53756` (`Shape C`)
 - **Triển khai `src/lab8/shapes/orchestrator.py`**:
   - Đọc claim an toàn qua `get_claim_view(conn, claim_id)` (tuân thủ nguyên tắc không dùng `SELECT *` và không bao giờ rò rỉ `parent_secret` hay `raw_headers` ra bên ngoài).
   - Kiểm tra `order_id`: Xử lý phân nhánh `needs_info` sớm khi thiếu `order_id`, không ghi ledger và không gọi LLM suy diễn mã đơn từ ticket text.
