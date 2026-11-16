@@ -13,18 +13,22 @@ Role 4: Durability (Crash/Ledger QA), Evaluation & Research.
 
 ## 3. Đóng góp cụ thể
 
-Rà soát kiểm tra idempotency, crash và approval; bổ sung test kiểm tra secret và PII trong trace/kết quả swarm. Chạy crash suite, ma trận student, benchmark bốn shape và ablation workflow–swarm; điền research card, số liệu báo cáo và đề xuất ADR. Commit đóng góp: `3a9ebbc`.
+- Rà soát các test về idempotency, crash recovery, approval theo claim và trần hoàn tiền theo đơn; chạy demo cho thấy chỉ dựa vào checkpoint có thể tạo hai dòng refund.
+- Bổ sung `test_swarm_result_and_trace_omit_secret_and_order_pii` trong `src/tests/test_role4_trace_privacy.py`: đối chiếu secret và các trường nhạy cảm của order với kết quả và artifact trace của swarm.
+- Chạy crash suite, ma trận student và benchmark bốn shape; so sánh workflow–swarm theo câu hỏi R4. Đóng góp số liệu vào research card, báo cáo nhóm và đề xuất chọn workflow trong ADR.
+- Commit đóng góp: [`3a9ebbc`](https://github.com/haanh293/K5-L3A-DAY08-AIPRO-FromWorkflowstoAgents/commit/3a9ebbc).
 
 ## 4. Bằng chứng
 
-- `src/tests/test_role4_trace_privacy.py`.
-- `src/reports/crash.json`: 20/20; `src/reports/benchmark.json`: 14 claim × 5 seed × 4 shape.
-- `src/reports/role4_r4_ablation.json`; ví dụ `R-swarm-C-002-s55`.
-- Ma trận student: 258 passed; cổng host: 91 passed.
+- `python -m lab8.demo.buggy_workflow`: `unsafe refund rows: 2` trong demo không an toàn.
+- `python -m lab8.crash_test --count 20 --out reports/crash.json`: 20/20; suite kiểm host và swarm. Các test T11/T12 của từng shape được kiểm riêng trong ma trận student.
+- `python -m pytest -q -m student -o addopts=`: 258 passed. Cổng host: 91 passed trên bản tích hợp.
+- `src/reports/benchmark.json`: 14 claim × 5 seed × 4 shape. Workflow đạt 70/70 trial, cost/success 28,79 VND mô phỏng; swarm đạt 69/70 và 49,57 VND.
+- `src/reports/role4_r4_ablation.json`: kết quả so sánh workflow–swarm; trial lỗi `R-swarm-C-002-s55`.
 
 ## 5. Công cụ AI đã dùng
 
-Dùng Codex để đọc tài liệu, hỗ trợ viết test, chạy đánh giá và soạn báo cáo. Kiểm tra bằng output lệnh, file JSON do công cụ sinh ra và test; số liệu hidden chưa có.
+Dùng Codex để đọc tài liệu, hỗ trợ viết test, chạy đánh giá và soạn báo cáo. Các kết quả được đối chiếu với output pytest, crash suite và JSON do công cụ lab sinh ra; số liệu hidden chưa có. Những nhận xét cá nhân ở mục 6 cần người nộp đọc lại để bảo đảm phản ánh trải nghiệm của mình.
 
 ## 6. Tự đánh giá
 
