@@ -48,7 +48,14 @@ Bài toán của LogiX-VN yêu cầu xử lý yêu cầu hoàn phí vận chuy�
 
 Bảng so sánh 4 shape trên bộ public (từ `src/reports/benchmark.json`): pass rate, pass^5, seed min–max, variance, cost/success, mean/p95 steps. Kèm crash safety (`src/reports/crash.json`) và, nếu có, kết quả tự kiểm trên `student_drop/`.
 
-*(Role 4 — Giáp Mạnh Tuyên cập nhật bảng số liệu từ `src/reports/benchmark.json` và `src/reports/crash.json` ở CP5)*
+| Shape | Pass rate | Pass^5 | Seed min–max | Variance | Cost/success (VND mô phỏng) | Mean/p95 steps |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| workflow | 1.000 | 1.000 | 1.000–1.000 | 0 | 28.79 | 3.79 / 4 |
+| single | 1.000 | 1.000 | 1.000–1.000 | 0 | 38.57 | 6.29 / 7 |
+| orchestrator | 1.000 | 1.000 | 1.000–1.000 | 0 | 56.65 | 3.71 / 4 |
+| swarm | 0.986 | 0.929 | 0.929–1.000 | 0.000816 | 49.57 | 2.80 / 3 |
+
+Mỗi shape chạy 14 claim × 5 seed; swarm sai C-002 seed 55. Crash suite host/swarm đạt 20/20; T11 và T12 qua ma trận student của cả bốn shape. Chưa có kết quả hidden chính thức.
 
 Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phiếu nghiên cứu và ablation: xem `report/team/research_card.md`.
 

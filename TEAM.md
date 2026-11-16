@@ -30,7 +30,7 @@ Gợi ý chia vai:
 | Nguyễn Hà Anh (2A202603605) | Role 1: Workflow + Team Lead / Integration | `8915a3b` | `src/tests/test_team_workflow.py` |
 | Nguyễn Văn Vinh (2A202603672) | Role 2: Single Agent (ReAct) | `(cập nhật sau khi commit)` | `src/tests/test_team_single.py` |
 | Hoàng Đăng Kiên (2A202603636) | Role 3: Orchestrator + Handoff & Security | `(cập nhật sau khi commit)` | `src/tests/test_team_orchestrator.py` |
-| Giáp Mạnh Tuyên (2A202603648) | Role 4: Durability + Evaluation & Research | `(cập nhật sau khi commit)` | `src/tests/test_team_durability_eval.py` |
+| Giáp Mạnh Tuyên (2A202603648) | Role 4: Durability + Evaluation & Research | `3a9ebbc` | `src/tests/test_role4_trace_privacy.py` |
 
 ## Cá nhân
 
@@ -99,7 +99,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Đóng góp cụ thể
 
-- (Cập nhật khi hoàn thành Role 4)
+- Kiểm tra crash, retry và trace; chạy benchmark bốn shape và ablation R4; ghi số liệu và đề xuất kiến trúc.
 
 ### Bằng chứng
 
