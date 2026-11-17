@@ -10,7 +10,7 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
   2. Nguyễn Văn Vinh (`2A202603672`) — Role 2: Single Agent (ReAct)
   3. Hoàng Đăng Kiên (`2A202603636`) — Role 3: Orchestrator + Handoff & Security
   4. Giáp Mạnh Tuyên (`2A202603648`) — Role 4: Durability (Crash/Ledger QA) + Evaluation & Research
-- Commit chốt (trùng `report/team/decision_adr.md`): `4faad08` (code và bằng chứng benchmark: `3a9ebbc`)
+- Commit chốt (trùng `report/team/decision_adr.md`): `d6ace0b` (bằng chứng benchmark: `3a9ebbc`, bonus B7 & selfcheck: `15c4869`)
 
 ## 2. Mục tiêu và cách tiếp cận
 
@@ -70,8 +70,10 @@ Bảng so sánh 4 shape trên bộ public (từ `src/reports/benchmark.json`): p
 - **Độ chính xác và phương sai:** Cả ba shape nhóm cài đặt (`workflow`, `single`, `orchestrator`) đều đạt **70/70 trial pass** (`pass_rate = 1.000`, `pass^5 = 1.000`, `variance = 0`) trên 14 claim × 5 seed (`11, 22, 33, 44, 55`). `swarm` tham chiếu đạt 69/70 (`pass_rate = 0.986`, `pass^5 = 0.929`, `variance = 0.000816`) do sai `C-002` ở seed `55` khi tin số ngày trễ trong ticket thay vì cột `delay_days` của đơn hàng.
 - **Chi phí mô phỏng:** `workflow` có chi phí thấp nhất (**28.79 VND/success**), rẻ hơn `single` (38.57 VND, do gọi trung bình 3.43 model calls trong vòng ReAct), `swarm` (49.57 VND, do 3 model calls + 4.66 tool calls) và `orchestrator` (56.65 VND, do investigator chạy trọn bộ 4 công cụ đọc trên các claim có `order_id`).
 - **Độ bền vững và bảo mật:** Crash suite (`src/reports/crash.json`) đạt **20/20** (`crash_safety = "20/20"`). Toàn bộ 4 shape vượt qua T11 (idempotent retry) và T12 (crash & resume) trong ma trận student (`258 passed`), cổng host đạt `91 passed`, với `secret_leak_count = 0` và `approval_bypass_count = 0`.
+- **Tự kiểm tra trên tập hidden (`student_drop/`):** Chạy `lab8.benchmark` trên 40 claim hidden × 5 seed (200 trial/shape) tạo file `src/reports/hidden_selfcheck.json`. Cả ba shape `workflow`, `single`, `orchestrator` đều đạt **0 trial lỗi hạ tầng** (`error_trials = 0`) và **0 trial nghi vấn rò rỉ bí mật** (`leak_suspect_trials = 0`), với phân phối kết quả đồng thuận tuyệt đối (95 denied, 90 resolved, 5 needs_info, 10 escalated).
+- **Phần Bonus (Topic B7 — Kiểm toán Grader):** Nhóm hoàn thành toàn diện chủ đề B7 theo EMNLP 2026. Xây dựng bộ kiểm toán metamorphic tại `src/tests/test_bonus_grader_audit.py` (11 test passed), công cụ đánh giá `src/bonus/grader_audit_evaluator.py`, báo cáo `report/team/bonus_report.md` và bằng chứng `src/reports/bonus_grader_audit.json`. Kết quả đã chứng minh `grader_b` là phiên bản chuẩn xác duy nhất, chỉ ra lỗi lạm phát chi phí của `grader_a` ($1.668\times$ thay vì $2.0\times$) và lỗi phạt hạ tầng của `grader_c` (kéo tụt pass rate từ $75\%$ xuống $56.25\%$), đồng thời kiểm chứng thành công quan hệ mới đề xuất: bất biến hoán vị thứ tự trial.
 
-Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md` (**chọn `workflow`**). Phiếu nghiên cứu và ablation (R4): xem `report/team/research_card.md`.
+Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md` (**chọn `workflow`**). Phiếu nghiên cứu và ablation (R4): xem `report/team/research_card.md`. Báo cáo kiểm toán grader (B7): xem `report/team/bonus_report.md`.
 
 ## 5. Khó khăn và cách xử lý
 
