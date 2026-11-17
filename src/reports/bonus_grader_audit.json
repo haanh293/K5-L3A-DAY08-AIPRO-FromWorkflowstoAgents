@@ -1,0 +1,145 @@
+{
+  "topic": "B7 · Kiểm toán grader (Grader Metamorphic Audit)",
+  "source": "Zhang et al. (2026), Rethinking the Evaluation of Efficiency Methods for Multi-Agent Systems, EMNLP 2026",
+  "domain_relation_delay": {
+    "relation": "delay_days_2_vs_3",
+    "claim_a": {
+      "delay_days": 2,
+      "amount_vnd": 0,
+      "clause_ids": [],
+      "reason": "no_entitlement",
+      "verdict": "denied"
+    },
+    "claim_b": {
+      "delay_days": 3,
+      "amount_vnd": 35000,
+      "clause_ids": [
+        "SHIP-LATE-03"
+      ],
+      "reason": "entitled",
+      "verdict": "entitled"
+    },
+    "passed": true,
+    "explanation": "Quyết định lật đúng: 2 ngày chưa đủ min_delay_days=3 nên 0đ; 3 ngày đủ điều kiện hoàn 35.000đ."
+  },
+  "graders_audit": {
+    "grader_a": {
+      "duplicate_relation": {
+        "passed": false,
+        "trials_a": 12,
+        "trials_b": 24,
+        "total_cost_a": 283.5,
+        "total_cost_b": 473.0,
+        "cost_ratio": 1.6684,
+        "cost_per_success_a": 31.5,
+        "cost_per_success_b": 26.2778,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.75
+      },
+      "infra_error_relation": {
+        "passed": true,
+        "trials_a": 12,
+        "trials_b": 16,
+        "graded_trials_a": 12,
+        "graded_trials_b": 12,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.75,
+        "successes_a": 9,
+        "successes_b": 9
+      },
+      "permutation_invariance_relation": {
+        "passed": false,
+        "cost_fwd": 283.5,
+        "cost_rev": 285.0,
+        "cost_diff": 1.5,
+        "cost_per_success_fwd": 31.5,
+        "cost_per_success_rev": 31.6667,
+        "cost_per_success_diff": 0.1667
+      },
+      "overall_status": "FAIL",
+      "behavioral_diagnosis": "Lỗi lạm phát chi phí (Cost Inflation): tổng chi phí không nhân đôi (1.668x thay vì 2.0x), cost/success bị lệch.; Lỗi phụ thuộc thứ tự (Order Sensitivity): đảo ngược thứ tự danh sách làm thay đổi tổng chi phí và cost/success do set `seen` trạng thái."
+    },
+    "grader_b": {
+      "duplicate_relation": {
+        "passed": true,
+        "trials_a": 12,
+        "trials_b": 24,
+        "total_cost_a": 189.5,
+        "total_cost_b": 379.0,
+        "cost_ratio": 2.0,
+        "cost_per_success_a": 21.0556,
+        "cost_per_success_b": 21.0556,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.75
+      },
+      "infra_error_relation": {
+        "passed": true,
+        "trials_a": 12,
+        "trials_b": 16,
+        "graded_trials_a": 12,
+        "graded_trials_b": 12,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.75,
+        "successes_a": 9,
+        "successes_b": 9
+      },
+      "permutation_invariance_relation": {
+        "passed": true,
+        "cost_fwd": 189.5,
+        "cost_rev": 189.5,
+        "cost_diff": 0.0,
+        "cost_per_success_fwd": 21.0556,
+        "cost_per_success_rev": 21.0556,
+        "cost_per_success_diff": 0.0
+      },
+      "overall_status": "PASS",
+      "behavioral_diagnosis": "Chuẩn (Sound Grader): thỏa mãn toàn bộ các quan hệ metamorphic."
+    },
+    "grader_c": {
+      "duplicate_relation": {
+        "passed": true,
+        "trials_a": 12,
+        "trials_b": 24,
+        "total_cost_a": 189.5,
+        "total_cost_b": 379.0,
+        "cost_ratio": 2.0,
+        "cost_per_success_a": 21.0556,
+        "cost_per_success_b": 21.0556,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.75
+      },
+      "infra_error_relation": {
+        "passed": false,
+        "trials_a": 12,
+        "trials_b": 16,
+        "graded_trials_a": 12,
+        "graded_trials_b": 16,
+        "pass_rate_a": 0.75,
+        "pass_rate_b": 0.5625,
+        "successes_a": 9,
+        "successes_b": 9
+      },
+      "permutation_invariance_relation": {
+        "passed": true,
+        "cost_fwd": 189.5,
+        "cost_rev": 189.5,
+        "cost_diff": 0.0,
+        "cost_per_success_fwd": 21.0556,
+        "cost_per_success_rev": 21.0556,
+        "cost_per_success_diff": 0.0
+      },
+      "overall_status": "FAIL",
+      "behavioral_diagnosis": "Lỗi phạt hạ tầng (Infrastructure Penalization): coi lỗi timeout/crash hạ tầng là shape thất bại, pass_rate sụt giảm từ 75% xuống 56.25%."
+    }
+  },
+  "sound_grader": "grader_b",
+  "flawed_graders": {
+    "grader_a": "Lạm phát chi phí (cộng thừa cost) và phụ thuộc thứ tự duyệt trials",
+    "grader_c": "Phạt lỗi hạ tầng (infra_error: true) thành thất bại của agent, bóp méo pass_rate"
+  },
+  "proposed_new_relation": {
+    "name": "permutation_invariance",
+    "description": "Bất biến trước hoán vị thứ tự trials. Đảo ngược danh sách trial không được làm thay đổi bất kỳ chỉ số tổng hợp nào.",
+    "uncovered_flaw": "Bắt được lỗi của grader_a: vì dùng tập seen để cộng chi phí lần đầu gặp claim_id, khi đảo thứ tự trials thì chi phí trial đầu tiên gặp bị thay đổi, dẫn đến tổng chi phí và cost/success bị lệch 1.5000 VND và 0.1667 VND."
+  }
+}
